@@ -49,7 +49,7 @@ jobs:
       # build the docker image, this will always run to make sure
       # the Dockerfile still works.
       - name: Build image
-        uses: elgohr/Publish-Docker-Github-Action@2.22
+        uses: elgohr/Publish-Docker-Github-Action@v5
         env:
           BRANCH: ${{ env.GITHUB_BRANCH }}
           BUILDNUMBER: ${{ github.run_number }}
@@ -66,7 +66,7 @@ jobs:
       # this will publish to github container registry
       - name: Publish to GitHub
         if: github.event_name == 'push' && github.repository == env.MASTER_REPO
-        uses: elgohr/Publish-Docker-Github-Action@2.22
+        uses: elgohr/Publish-Docker-Github-Action@v5
         env:
           BRANCH: ${{ env.GITHUB_BRANCH }}
           BUILDNUMBER: ${{ github.run_number }}
@@ -82,7 +82,7 @@ jobs:
       # this will publish to the pecan dockerhub repo
       - name: Publish to Docker Hub
         if: github.event_name == 'push' && github.repository == env.MASTER_REPO
-        uses: elgohr/Publish-Docker-Github-Action@2.22
+        uses: elgohr/Publish-Docker-Github-Action@v5
         env:
           BRANCH: ${{ env.GITHUB_BRANCH }}
           BUILDNUMBER: ${{ github.run_number }}
